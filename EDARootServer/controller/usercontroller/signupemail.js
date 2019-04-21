@@ -40,9 +40,6 @@ module.exports = async function (ctx, next) {
         }
 
     } catch (error) {
-        console.log(error);
-        ctx.body = {
-            code: netCode.UNEXPECTEDERR
-        }
+        util.error(ctx, error);
     }
 }

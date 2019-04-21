@@ -1,5 +1,6 @@
-let emailReg = /^[A-Za-z\d]+([-_.][A-Za-z\d]+)*@([A-Za-z\d]+[-.])+[A-Za-z\d]{2,4}$/;
-
+const netCode = require('../../modules/code/index').transMissionCode;
+console.log("Init service-util............");
+const emailReg = /^[A-Za-z\d]+([-_.][A-Za-z\d]+)*@([A-Za-z\d]+[-.])+[A-Za-z\d]{2,4}$/;
 /**
  * 检查邮箱是否合法
  */
@@ -39,4 +40,13 @@ module.exports.createToken = function (codeLength) {
         arr += Math.floor(Math.random() * 10);
     }
     return arr;
+}
+/**
+ * Error处理流程
+ */
+module.exports.error = function (ctx, err) {
+    console.log(err);
+    ctx.body = {
+        code: netCode.UNEXPECTEDERR
+    }
 }
