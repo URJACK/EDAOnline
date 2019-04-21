@@ -1,6 +1,7 @@
 const emailConfig = require('./config');
 const nodemailer = require('nodemailer');
 
+console.log("Email Service..........")
 const transporter = nodemailer.createTransport({
     service: emailConfig.service,
     auth: {

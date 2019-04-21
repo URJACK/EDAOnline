@@ -95,6 +95,6 @@ SubServer.init({
 //同步数据库
 // sequelize.sync();
 
-console.log("init Database Module............");
+console.log("init Database Service............");
 module.exports.User = User;
 module.exports.SubServer = SubServer;
