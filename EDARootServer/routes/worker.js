@@ -21,5 +21,8 @@ router.post('/notoccupy', async (ctx, next) => {
 router.post('/resettoken', async (ctx, next) => {
   await WorkerController.action_resettoken(ctx, next);
 })
+router.post('/modify', async (ctx, next) => {
+  await WorkerController.action_modify(ctx, next);
+})
 
 module.exports = router;

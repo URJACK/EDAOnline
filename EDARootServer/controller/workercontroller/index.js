@@ -51,3 +51,5 @@ const action_notoccupy = require('./notoccupy');
 module.exports.action_notoccupy = action_notoccupy;
 const action_info = require('./info');
 module.exports.action_info = action_info;
+const action_modify = require('./modify');
+module.exports.action_modify = action_modify;
