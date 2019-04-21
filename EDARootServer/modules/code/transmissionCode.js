@@ -15,6 +15,7 @@ class TransmissionCode {
         this.PORTCONFIGERR = 312;
         this.SUBSERVERLOSTCONNECTION = 313;
         this.NOTREGIST = 314;
+        this.NOLEVEL = 315;
         this.UNEXPECTEDERR = 399;
     }
 

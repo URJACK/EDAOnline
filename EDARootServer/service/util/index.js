@@ -24,3 +24,19 @@ module.exports.infoStringCheck = function (str) {
     }
     return true;
 }
+/**
+ * 从上下文对象ctx中取得post数据
+ */
+module.exports.getPostData = function (ctx) {
+    return ctx.request.body;
+}
+/**
+ * 创建一个长度为 codeLength 纯数字的 token
+ */
+module.exports.createToken = function (codeLength) {
+    let arr = new String();
+    for (let i = 0; i < codeLength; ++i) {
+        arr += Math.floor(Math.random() * 10);
+    }
+    return arr;
+}

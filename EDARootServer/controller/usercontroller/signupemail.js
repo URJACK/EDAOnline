@@ -1,15 +1,8 @@
 const db = require('./index').db;
 const netCode = require('./index').netCode;
 const userStatusCode = require('./index').userStatusCode;
-
-/**创建一个codeLength长度的数字验证码 */
-function createVerifyCode(codeLength) {
-    let arr = new String();
-    for (let i = 0; i < codeLength; ++i) {
-        arr += Math.floor(Math.random() * 10);
-    }
-    return arr;
-}
+const userLevelCode = require('./index').userLevelCode;
+const util = require('./index').util;
 
 /**创建一个数据里的User对象 */
 function createUser(email, verifyCode) {
@@ -17,12 +10,13 @@ function createUser(email, verifyCode) {
         email: email,
         status: userStatusCode.WAITINGVERIFYINGCODE,
         verifytime: new Date(),
-        verifycode: verifyCode
+        verifycode: verifyCode,
+        level: userLevelCode.USER
     }
 }
 
 module.exports = async function (ctx, next) {
-    let data = ctx.request.body;
+    let data = util.getPostData(ctx);
     try {
         let email = data.email;
         let userObj = await db.User.findOne({
@@ -37,7 +31,7 @@ module.exports = async function (ctx, next) {
             }
             return;
         }
-        let verifyCode = createVerifyCode(5);
+        let verifyCode = util.createToken(5);
         userObj = db.User.build(createUser(email, verifyCode));
         await userObj.save();
         ctx.body = {

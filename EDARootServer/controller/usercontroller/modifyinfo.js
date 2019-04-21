@@ -3,7 +3,7 @@ const util = require('./index').util;
 const netCode = require('./index').netCode;
 
 module.exports = async function (ctx, next) {
-    let data = ctx.request.body;
+    let data = util.getPostData(ctx);
     try {
         let userinfo = data.userinfo;
         let dbObj = await db.User.findOne({

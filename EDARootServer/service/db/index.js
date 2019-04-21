@@ -44,6 +44,10 @@ User.init({
     //用户获取验证码的时间
     verifytime: {
         type: Sequelize.DATE
+    },
+    //用户的级别
+    level: {
+        type: Sequelize.INTEGER
     }
 }, { sequelize, modelName: 'user' });
 
@@ -51,6 +55,18 @@ class SubServer extends Sequelize.Model { };
 SubServer.init({
     //子服务器的名字是独一无二的
     name: {
+        type: Sequelize.STRING
+    },
+    //子服务器的位置所在地
+    location: {
+        type: Sequelize.STRING
+    },
+    //子服务器的介绍
+    introduction: {
+        type: Sequelize.TEXT,
+    },
+    //记录的IP地址
+    address: {
         type: Sequelize.STRING
     },
     //HTTP 协议监听端口
@@ -61,10 +77,6 @@ SubServer.init({
     token: {
         type: Sequelize.STRING
     },
-    //子服务器的介绍
-    introduction: {
-        type: Sequelize.TEXT,
-    },
     //当前子服务器是否被占用 默认是没有被占用
     status: {
         type: Sequelize.INTEGER,
@@ -73,6 +85,7 @@ SubServer.init({
     recentlyemail: {
         type: Sequelize.STRING,
     },
+    //最近一次的使用时间
     recentlytime: {
         type: Sequelize.DATE
     }

@@ -1,9 +1,10 @@
 const db = require('./index').db;
 const netCode = require('./index').netCode;
 const userStatusCode = require('./index').userStatusCode;
+const util = require('./index').util;
 
 module.exports = async function (ctx, next) {
-    let data = ctx.request.body;
+    let data = util.getPostData(ctx);
     try {
         let verifyCode = data.verifycode;
         let email = data.email;
