@@ -3,6 +3,7 @@ const util = require('../../service/util/index');
 const netCode = require('../../modules/code/index').transMissionCode;
 const userStatusCode = require('../../modules/code/index').userStatusCode;
 const userLevelCode = require('../../modules/code/index').userLevelCode;
+const nodeModule = require('../../service/email/index');
 
 console.log("Init UserController ...........");
 
@@ -12,6 +13,7 @@ module.exports.netCode = netCode;
 module.exports.userStatusCode = userStatusCode;
 module.exports.userLevelCode = userLevelCode;
 module.exports.util = util;
+module.exports.nodeModule = nodeModule;
 
 
 const action_login = require('./login');

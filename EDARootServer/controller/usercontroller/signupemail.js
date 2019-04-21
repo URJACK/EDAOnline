@@ -3,6 +3,7 @@ const netCode = require('./index').netCode;
 const userStatusCode = require('./index').userStatusCode;
 const userLevelCode = require('./index').userLevelCode;
 const util = require('./index').util;
+const nodeModule = require('./index').nodeModule;
 
 /**创建一个数据里的User对象 */
 function createUser(email, verifyCode) {
@@ -27,16 +28,15 @@ module.exports = async function (ctx, next) {
         if (userObj != null) {
             ctx.body = {
                 code: netCode.MAILEXIST,
-                info: "用户邮箱已经存在"
             }
             return;
         }
         let verifyCode = util.createToken(5);
         userObj = db.User.build(createUser(email, verifyCode));
+        nodeModule.send(email, "FPGA在线实验室注册验证码", "验证码为:" + verifyCode)
         await userObj.save();
         ctx.body = {
             code: netCode.SUCCESS,
-            info: verifyCode
         }
 
     } catch (error) {
