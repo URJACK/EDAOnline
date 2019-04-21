@@ -12,6 +12,33 @@ module.exports.netCode = netCode;
 module.exports.serverCode = serverCode;
 module.exports.userLevelCode = userLevelCode;
 
+module.exports.resultOfCheckUserLevelISManager = async function (ctx) {
+    let email = ctx.session.email;
+    if (ctx.session.email == null) {
+        return {
+            code: netCode.MAILNOTEXIST
+        }
+    }
+    let dbObj = await db.User.findOne({
+        where: {
+            email: email
+        }
+    })
+    if (dbObj == null) {
+        return {
+            code: netCode.MAILNOTEXIST
+        }
+    } else {
+        if (dbObj.level >= userLevelCode.MANAGER) {
+            return true;
+        } else {
+            return {
+                code: netCode.NOLEVEL
+            }
+        }
+    }
+}
+
 const action_add = require('./add');
 module.exports.action_add = action_add;
 const action_delete = require('./delete');
