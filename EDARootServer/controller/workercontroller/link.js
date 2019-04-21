@@ -45,6 +45,7 @@ module.exports = async function (ctx, next) {
                 });
                 if (userInfo != null) {
                     networkService.sendPostJson(subServer.address, subServer.httpport, subServerOccupyPath, databaseToUserInfo(userInfo), function (data) {
+                        subServer.status = serverCode.USING
                         ctx.body = {
                             code: netCode.SUCCESS,
                             linkurl: createLinkUrl(subServer.address, subServer.httpport, subServerVisitPath)
