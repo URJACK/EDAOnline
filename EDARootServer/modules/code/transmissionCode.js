@@ -16,6 +16,7 @@ class TransmissionCode {
         this.SUBSERVERLOSTCONNECTION = 313;
         this.NOTREGIST = 314;
         this.NOLEVEL = 315;
+        this.SUBSERVERNOTOPEN = 316;
         this.UNEXPECTEDERR = 399;
     }
 

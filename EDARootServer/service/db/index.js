@@ -98,11 +98,3 @@ SubServer.init({
 console.log("init Database Module............");
 module.exports.User = User;
 module.exports.SubServer = SubServer;
-module.exports.debug = async function () {
-    let obj = await User.findOne({
-        where: {
-            email: "316585692@qq.com"
-        }
-    })
-    console.log(obj)
-}

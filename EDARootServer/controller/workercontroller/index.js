@@ -3,6 +3,8 @@ const util = require('../../service/util/index');
 const netCode = require('../../modules/code/index').transMissionCode;
 const userLevelCode = require("../../modules/code/index").userLevelCode;
 const serverCode = require('../../modules/code/index').subserverStatusCode;
+const networkService = require('../../service/network/index');
+
 
 console.log("init workercontroller.............");
 
@@ -11,6 +13,7 @@ module.exports.util = util;
 module.exports.netCode = netCode;
 module.exports.serverCode = serverCode;
 module.exports.userLevelCode = userLevelCode;
+module.exports.networkService = networkService;
 
 module.exports.resultOfCheckUserLevelISManager = async function (ctx) {
     let email = ctx.session.email;
