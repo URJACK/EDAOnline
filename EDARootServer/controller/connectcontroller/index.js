@@ -4,6 +4,7 @@ const netCode = require('../../modules/code/index').transMissionCode;
 const userStatusCode = require('../../modules/code/index').userStatusCode;
 const userLevelCode = require('../../modules/code/index').userLevelCode;
 const nodeModule = require('../../service/email/index');
+const compilerModule = require('../../modules/compiler/index'); 
 
 console.log("Init ConnectController ...........");
 
@@ -13,6 +14,7 @@ module.exports.userStatusCode = userStatusCode;
 module.exports.userLevelCode = userLevelCode;
 module.exports.util = util;
 module.exports.nodeModule = nodeModule;
+module.exports.compilerModule = compilerModule;
 
 const action_code = require('./code');
 module.exports.action_code = action_code;
