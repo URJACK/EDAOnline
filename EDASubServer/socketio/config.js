@@ -5,8 +5,8 @@ module.exports.TCPLISTEN = 6666;
 //UDP 通信监听的端口
 module.exports.UDPLISTEN = 6667;
 //是否使用客户端到服务器的TCP
-module.exports.USECSTCP = true;
+module.exports.USECSTCP = false;
 //是否使用服务器到服务器的TCP
-module.exports.USESSTCP = true;
+module.exports.USESSTCP = false;
 //是否使用服务器到服务器的UDP
-module.exports.USESSUDP = true;
+module.exports.USESSUDP = false;
