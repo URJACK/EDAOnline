@@ -43,3 +43,7 @@ module.exports.PATH_CODE = PATH_CODE;
 /**编译 项目配置文件的 路径 */
 const PATH_PROJCONF = `F:\\quartusProjects\\NETPGM\\NETPGM.qsf`;
 module.exports.PATH_PROJCONF = PATH_PROJCONF;
+
+/**编译 生成的JIC 文件的路径 */
+const PATH_JIC = `F:\\quartusProjects\\NETPGM\\NETPGM.jic`
+module.exports.PATH_JIC = PATH_JIC;

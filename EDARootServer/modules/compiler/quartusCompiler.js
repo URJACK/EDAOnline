@@ -20,6 +20,7 @@ class QuartusCompiler {
         this.pathproj = config.PATH_PROJECT;
         this.pathsof = config.PATH_SOF;
         this.nameproj = config.NAME_PROJECT;
+        this.pathjic = config.PATH_JIC;
     }
     /**
      * 设置引脚们
@@ -55,19 +56,25 @@ class QuartusCompiler {
     }
     /**
      * 执行编译 大量函数是同步执行的
+     * 会生成SOF文件：用来暂时进行Program的文件
+     * 会生成JIC文件：用来烧写Program的文件
      */
     compile() {
         console.log("start compile...........");
         let PATHPROJ = this.pathproj;
         let NAMEPROJ = this.nameproj;
+        let PATHSOF = this.pathsof;
+        let PATHJIC = this.pathjic;
         let COMMAND_MAP = `quartus_map --read_settings_files=on --write_settings_files=off ${PATHPROJ} -c ${NAMEPROJ}\n`;
         let COMMAND_FIT = `quartus_fit --read_settings_files=off --write_settings_files=off ${PATHPROJ} -c ${NAMEPROJ}\n`;
-        let COMMAND_ASM = `quartus_asm --read_settings_files=off --write_settings_files=off ${PATHPROJ} -c ${NAMEPROJ}\n`;
         let COMMAND_STA = `quartus_sta ${PATHPROJ} -c ${NAMEPROJ}\n`;
+        let COMMAND_ASM = `quartus_asm --read_settings_files=off --write_settings_files=off ${PATHPROJ} -c ${NAMEPROJ}\n`;
+        let COMMAND_JIC = `quartus_cpf -c -d EPCS4 -s EP4CE6 ${PATHSOF} ${PATHJIC}`
         cp.execSync(COMMAND_MAP);
         cp.execSync(COMMAND_FIT);
         cp.execSync(COMMAND_ASM);
         cp.execSync(COMMAND_STA);
+        cp.execSync(COMMAND_JIC);
         console.log("compile finished");
     }
     /**
