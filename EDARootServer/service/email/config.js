@@ -1,5 +1,6 @@
 module.exports = {
     service: 'qq',
-    from: "316585692@qq.com",
-    pass: "dsaonktshpdmbghc"
+    from: "1693136836@qq.com",
+    pass: "ttbdagqtkuurbajj"
+    // pass: "aubwkypfsjwnbieb"
 }
