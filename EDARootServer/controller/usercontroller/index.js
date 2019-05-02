@@ -26,3 +26,5 @@ const action_signupinfo = require('./signupinfo');
 module.exports.action_signupinfo = action_signupinfo;
 const action_modifyinfo = require('./modifyinfo');
 module.exports.action_modifyinfo = action_modifyinfo;
+const action_info = require('./info');
+module.exports.action_info = action_info;

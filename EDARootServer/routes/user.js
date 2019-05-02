@@ -28,5 +28,8 @@ router.post('/signupinfo', async (ctx, next) => {
 router.post('/modifyinfo', async (ctx, next) => {
   await UserController.action_modifyinfo(ctx, next);
 })
+router.post('/info', async (ctx, next) => {
+  await UserController.action_info(ctx, next);
+})
 
 module.exports = router;
