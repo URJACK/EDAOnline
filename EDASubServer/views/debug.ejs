@@ -13,9 +13,9 @@
     let platformUrl = "localhost:3000"
 
     window.onload = function () {
-        axios.defaults.baseURL = 'https://api.example.com';
-        axios.defaults.headers.common['Authorization'] = "123";
-        axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
+        // axios.defaults.baseURL = 'https://api.example.com';
+        // axios.defaults.headers.common['Authorization'] = "123";
+        // axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 
         clickFunc = function () {
             axios.post('http://localhost:80/user/signupemail', {email:"316585692@qq.com"})

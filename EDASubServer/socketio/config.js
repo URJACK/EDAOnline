@@ -1,5 +1,5 @@
 //Web HTTP 服务监听的端口
-module.exports.HTTPPORT = 80;
+module.exports.HTTPPORT = 3000;
 //TCP 通信监听的端口
 module.exports.TCPLISTEN = 6666;
 //UDP 通信监听的端口
