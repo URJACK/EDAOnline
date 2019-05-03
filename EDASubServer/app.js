@@ -6,6 +6,7 @@ const onerror = require('koa-onerror')
 const bodyparser = require('koa-bodyparser')
 const logger = require('koa-logger')
 const cors = require('koa2-cors')
+require('./service/index')();
 
 //my extension module needed
 const session = require('koa-session')
@@ -37,7 +38,7 @@ if (socketConfig.USESSTCP) {
   const serverConnectedServer = net
     .createServer(initSocketServerTcp)
     .listen(connectPort);
-    console.log("Server To Server TCP Listen At ", socketConfig.TCPLISTEN);
+  console.log("Server To Server TCP Listen At ", socketConfig.TCPLISTEN);
 }
 if (socketConfig.USECSTCP) {
   // clienttoserver io module worked
@@ -47,7 +48,7 @@ if (socketConfig.USECSTCP) {
 if (socketConfig.USESSUDP) {
   // servertoserverudp io module worked
   initSocketServerUdp(udpServer);
-  console.log("Server To Server UDP Listen At",socketConfig.UDPLISTEN);
+  console.log("Server To Server UDP Listen At", socketConfig.UDPLISTEN);
 }
 console.log("HTTP Listen At ", socketConfig.HTTPPORT);
 // Http Basic Task

@@ -47,6 +47,11 @@ class PacketReceiver {
         this.readingFlag = false;
         console.log("PacketReceiver has been created successfully.")
     }
+    /**
+     * PacketReceiver外部调用接口
+     * 
+     * 通过这个接口不断的读取从串口收到的数据
+     */
     inputNewString(str) {
         //如果是正确的状态
         if (this.readingFlag) {
@@ -77,6 +82,7 @@ class PacketReceiver {
         this.switchStatus = frame.substring(50, 52);
         this.outputMode = frame.substring(52, 53);
         this.checkSum = frame.substring(53, 55);
+        console.log("<Debug> 已经接受成功帧");
     }
     /**
      * 将字符串内容传入缓存数组中进行数据的录入
