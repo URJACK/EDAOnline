@@ -11,7 +11,7 @@ class PacketSender {
      * @param {string} data 被发送的帧
      */
     send(data) {
-        item = new Buffer(data, "ascii");
+        let item = new Buffer(data, "ascii");
         if (this.serialPort != null && this.serialPort.isOpen) {
             this.serialPort.write(item, function (error, result) {
                 if (error) {
