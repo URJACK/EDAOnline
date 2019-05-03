@@ -53,17 +53,19 @@ class PacketReceiver {
      * 通过这个接口不断的读取从串口收到的数据
      */
     inputNewString(str) {
+        str = str.toString();
         //如果是正确的状态
         if (this.readingFlag) {
-            workNewString(str)
+            this.workNewString(str)
         }
         //如果是还没有打开的情况就是在其请求readingFlag
         else {
             let beginpos = str.indexOf("$$");
             if (beginpos != -1) {
                 this.readingFlag = true;
+                this.bufferStr = "";
                 //这里初次传入的帧是跳过了帧头的
-                workNewString(str.substring(beginpos + 2, str.length - 1))
+                this.workNewString(str.substring(beginpos + 2, str.length - 1))
             }
         }
     }
@@ -95,6 +97,7 @@ class PacketReceiver {
         if (endpos != -1) {
             //取得帧字串，帧头在外部被跳过了
             let frameStr = this.bufferStr.substring(0, endpos);
+            this.getDataFromFrame(frameStr);
             this.bufferStr = "";
             this.readingFlag = false;
 
