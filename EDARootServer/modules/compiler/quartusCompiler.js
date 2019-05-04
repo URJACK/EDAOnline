@@ -40,6 +40,8 @@ class QuartusCompiler {
      */
     setCode(code) {
         this.code = code;
+        console.log("<debug><code>")
+        console.log(code);
     }
     /**
      * 预编译 根据自己的 pins 与 compile
@@ -70,11 +72,17 @@ class QuartusCompiler {
         let COMMAND_STA = `quartus_sta ${PATHPROJ} -c ${NAMEPROJ}\n`;
         let COMMAND_ASM = `quartus_asm --read_settings_files=off --write_settings_files=off ${PATHPROJ} -c ${NAMEPROJ}\n`;
         let COMMAND_JIC = `quartus_cpf -c -d EPCS4 -s EP4CE6 ${PATHSOF} ${PATHJIC}`
+        console.log("after cmd")
         cp.execSync(COMMAND_MAP);
+        console.log("after map")
         cp.execSync(COMMAND_FIT);
+        console.log("after fit")
         cp.execSync(COMMAND_ASM);
+        console.log("after asm")
         cp.execSync(COMMAND_STA);
+        console.log("after sta")
         cp.execSync(COMMAND_JIC);
+        console.log("after jic")
         console.log("compile finished");
     }
     /**

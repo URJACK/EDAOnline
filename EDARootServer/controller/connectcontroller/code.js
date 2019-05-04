@@ -11,6 +11,7 @@ module.exports = async function (ctx, next) {
         let token = data.token;
         let content = data.content;
         let pins = data.pins;
+        pins = JSON.parse(pins);
         let subServer = await db.SubServer.findOne({
             where: {
                 name: serverName
@@ -26,17 +27,16 @@ module.exports = async function (ctx, next) {
                     code: netCode.TOKENERR
                 }
             } else {
-                compilerModule.setPins(pins);
-                compilerModule.setCode(content);
-                compilerModule.compile();
+                ctx.body = {
+                    code: netCode.SUCCESS
+                }
+                compilerModule.compile(pins, content);
                 compilerModule.transferFile(subServer.address, subServer.port, function (data) {
-                    ctx.body = {
-                        code: netCode.SUCCESS
-                    }
+                    console.log("已经成功传输了文件")
                 })
             }
         }
     } catch (error) {
-        util.error(error);
+        console.log(error);
     }
 }

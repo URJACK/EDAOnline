@@ -3,10 +3,10 @@ const netWorkService = require('../../service/network/index');
 const config = require('./config');
 const upLoadPath = "/connect/result";
 const filePath = config.PATH_SOF;
-module.exports.setPins = quartusCompiler.setPins;
-module.exports.setCode = quartusCompiler.setCode;
 /** 是一个同步方法，过程是阻塞的*/
-module.exports.compile = function () {
+module.exports.compile = function (pins, code) {
+    quartusCompiler.setPins(pins);
+    quartusCompiler.setCode(code);
     quartusCompiler.preCompile();
     quartusCompiler.compile();
 }
