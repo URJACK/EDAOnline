@@ -6,7 +6,7 @@ class Downloader {
     }
     download() {
         let PATHSOF = config.PATHSOF;
-        let COMMAND_PGM = `quartus_pgm -m jtag -c USB-Blaster[USB-0] -o ${PATHSOF} \n`;
+        let COMMAND_PGM = `quartus_pgm -m jtag -c USB-Blaster[USB-0] -o ${PATHJIC} \n`;
         buffer = cp.execSync(COMMAND_PGM);
     }
 }

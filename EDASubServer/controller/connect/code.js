@@ -9,7 +9,7 @@ function createSenddata(content, pins) {
         servername: ServerInfoModule.getServerName(),
         token: ServerInfoModule.getServerToken(),
         content: content,
-        pins: pins
+        pins: JSON.stringify(pins)
     }
 }
 
@@ -21,11 +21,13 @@ module.exports = async function (ctx, next) {
         let content = data.content;
         let pins = data.pins;
         let sendData = createSenddata(content, pins);
+        console.log(sendData);
         networkModule.sendPostJson(ServerInfoModule.getRootServerIp(), ServerInfoModule.getRootServerPort(), rootServerCodePath, sendData, function (data) {
-            ctx.body = {
-                code: netCode.SUCCESS
-            }
+            console.log("主服务器正在进行编译");
         })
+        ctx.body = {
+            code: netCode.SUCCESS
+        }
     } catch (error) {
         util.error(error);
     }
