@@ -81,8 +81,8 @@ class QuartusCompiler {
         console.log("after asm")
         cp.execSync(COMMAND_STA);
         console.log("after sta")
-        cp.execSync(COMMAND_JIC);
-        console.log("after jic")
+        // cp.execSync(COMMAND_JIC);
+        // console.log("after jic")
         console.log("compile finished");
     }
     /**

@@ -3,6 +3,11 @@ const querystring = require("querystring");
 class PostSender {
     sendJson(address, port, path, data, callback) {
         let postData = querystring.stringify(data);
+        console.log("<debug><postsender><sendjson>");
+        console.log(address);
+        console.log(port);
+        console.log(path);
+        console.log(data);
         let options = {
             hostname: address,
             port: port,
