@@ -1,6 +1,7 @@
 const userInfoRecorder = require('./userInfoRecorder');
 const serverInfoRecorder = require('./serverInfoRecorder');
 const rootServerInfoRecorder = require('./rootServerInfoRecorder');
+const compilerInfoRecorder = require('./compilerInfoRecorder');
 
 module.exports.getServerName = function () {
     return serverInfoRecorder.serverName;
@@ -37,4 +38,14 @@ module.exports.getRootServerPort = function () {
 }
 module.exports.getRootServerToken = function () {
     return rootServerInfoRecorder.getRootServerToken()
+}
+module.exports.getCompilerInfo = function () {
+    if (compilerInfoRecorder.complierStatus) {
+        return compilerInfoRecorder.getCompilerInfo();
+    } else {
+        throw new Error("nosuit");
+    }
+}
+module.exports.setCompilerInfo = function (info) {
+    compilerInfoRecorder.setComplierInfo(info);
 }

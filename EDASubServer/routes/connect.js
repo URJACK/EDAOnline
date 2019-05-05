@@ -28,8 +28,11 @@ router.post('/code', async (ctx, next) => {
 router.post('/ctrl', async (ctx, next) => {
     await ConnectController.action_ctrl(ctx, next);
 })
-router.post('/result', async (ctx, next) => {
-    await ConnectController.action_result(ctx, next);
+router.post('/getstatus', async (ctx, next) => {
+    await ConnectController.action_getstatus(ctx, next);
+})
+router.post('/setstatus', async (ctx, next) => {
+    await ConnectController.action_setstatus(ctx, next);
 })
 //路由
 router.post('/result', upload.single('file'), async (ctx, next) => {
